@@ -96,4 +96,15 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back();
     }
+    public function show_book()
+    {
+        $book = Book::all();
+        return view('admin.show_book',compact('book'));
+    }
+    public function book_delete($id)
+    {
+        $data = Book::find($id);
+        $data->delete();
+        return redirect()->back()->with('message', 'Book Deleted Successfully');
+    }
 }
