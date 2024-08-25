@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Borrow;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 
@@ -141,5 +142,10 @@ class AdminController extends Controller
         }
         $data->save();
         return redirect('/show_book');
+    }
+    public function borrow_request()
+    {
+        $data = Borrow::all();
+        return view('admin.borrow_request',compact('data'));
     }
 }
